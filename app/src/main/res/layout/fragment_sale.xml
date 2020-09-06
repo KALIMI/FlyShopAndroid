@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1C162E"
+
     tools:context=".views.Sale.Sale">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/saleProductList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sale" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
