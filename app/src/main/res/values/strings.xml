@@ -96,4 +96,7 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="top_chat_message">Բարեւ Ձեզ!\nՄենք ունենք նոր տեսականի Ձեզ համար:</string>
+    <string name="bottom_chat_message">Բարի! Հիմա կնայեմ:</string>
+    <string name="sale_top_chat_message">Կարծես թե զեղչեր ունենք:\nԲաց մի՛ թող այս հնարավորությունը:</string>
 </resources>
