@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeTab">
+
+    <fragment
+        android:id="@+id/homeTab"
+        android:name="com.developer.store.flyshop.views.Home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/salesTab"
+        android:name="com.developer.store.flyshop.views.Sale.Sale"
+        android:label="fragment_sales"
+        tools:layout="@layout/fragment_sale" >
+        <action
+            android:id="@+id/action_salesTab_to_selectedProduct"
+            app:destination="@id/selectedProduct" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shopsTab"
+        android:name="com.developer.store.flyshop.views.AllShops.AllShops"
+        android:label="fragment_shops"
+        tools:layout="@layout/fragment_all_shops" />
+
+    <fragment
+        android:id="@+id/newTab"
+        android:name="com.developer.store.flyshop.views.New.New"
+        android:label="fragment_new"
+        tools:layout="@layout/fragment_new" >
+
+        <argument android:name="product"
+            app:argType="com.developer.store.flyshop.models.ProductViewModel"/>
+        <action
+            android:id="@+id/action_newTab_to_selectedProduct"
+            app:destination="@id/selectedProduct" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/cartTab"
+        android:name="com.developer.store.flyshop.views.Cart.Cart"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+
+
+    <fragment
+        android:id="@+id/selectedProduct"
+        android:name="com.developer.store.flyshop.views.AllShops.SelectedProduct"
+        android:label="fragment_selected_product"
+        tools:layout="@layout/fragment_selected_product" />
+
+
+</navigation>

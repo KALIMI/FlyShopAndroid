@@ -1,6 +1,8 @@
 package com.developer.store.flyshop.models
 
-class ProductViewModel( val product: ProductModel) {
+import java.io.Serializable
+
+class ProductViewModel( val product: ProductModel) : Serializable{
 
     var ar: Boolean? = product.ar
     var brand: String? = product.brand

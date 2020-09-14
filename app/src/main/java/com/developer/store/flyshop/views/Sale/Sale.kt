@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.developer.store.flyshop.Adapters.NewProductsAdapter
@@ -25,12 +29,17 @@ import kotlinx.android.synthetic.main.fragment_sale.*
 
 class Sale : Fragment(), ClickCallback {
 
+    var navController: NavController? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_sale, container, false)
     }
 
     @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        navController = Navigation.findNavController(view)
+
         val layoutManager = GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
         val saleProductList = view.findViewById<RecyclerView>(R.id.saleProductList)
         val adapter = SaleProductAdapter(ArrayList(), this)
@@ -50,7 +59,9 @@ class Sale : Fragment(), ClickCallback {
     }
 
     override fun productClicked(product: ProductViewModel) {
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment, SelectedProduct())?.commit()
+
+        val bundle = bundleOf("product" to product )
+        navController!!.navigate(R.id.action_newTab_to_selectedProduct, bundle)
     }
 
 }

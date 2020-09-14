@@ -5,6 +5,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
 import com.developer.store.flyshop.R
 import com.developer.store.flyshop.views.AllShops.AllShops
 import com.developer.store.flyshop.views.Cart.Cart
@@ -20,55 +25,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        navBar.selectedItemId = R.id.homeTab
+        val navController = Navigation.findNavController(this, R.id.fragment)
         navBar.itemIconTintList = null
 
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment, Home())
-        fragmentTransaction.commit()
-
-        navBar.setOnNavigationItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.shopsTab -> {
-                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.fragment, AllShops())
-                    fragmentTransaction.commit()
-                    true
-                }
-
-                R.id.newTab -> {
-                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.fragment, New())
-                    fragmentTransaction.commit()
-                    true
-                }
-
-                R.id.homeTab -> {
-
-                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.fragment, Home())
-                    fragmentTransaction.commit()
-                    true
-                }
-
-                R.id.salesTab -> {
-
-                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.fragment, Sale())
-                    fragmentTransaction.commit()
-                    true
-                }
-
-                R.id.cartTab -> {
-                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.fragment, Cart())
-                    fragmentTransaction.commit()
-                    true
-                }
-                else -> { false}
-            }
-        }
-
+        NavigationUI.setupWithNavController(navBar, navController)
 
     }
 }
